@@ -1,6 +1,9 @@
 # Etap 1 Projektu
-## Członkowie: Kamil Drzewiecki, Jakub Haczyński, Karol Grabowski
-## Wybrany projekt: System biblioteczny
+## Członkowie: 
+- Kamil Drzewiecki 310819
+- Jakub Haczyński 310872
+- Karol Grabowski 310857
+# Wybrany projekt: System biblioteczny
 
 ## Opis słowny przypadków użycia
 - Wyświetlenie informacji o książce
@@ -25,4 +28,3 @@
 ![Diagram klas](ClassesDiagram.png)
 ## Repozytorium
 https://gitlab-stud.elka.pw.edu.pl/kdrzewi1/prm2t21lpro_drzewiecki
-
