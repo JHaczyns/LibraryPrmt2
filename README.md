@@ -20,7 +20,7 @@
 - Odczyt biblioteki z pliku
 - Przeniesienie kategorii do innej kategorii-matki
 ## Diagram przypadków użycia
-
+![Diagram przypadków użycia](UseCaseDiagram.png)
 ## Diagram klas
 ![Diagram klas](ClassesDiagram.png)
 ## Repozytorium
