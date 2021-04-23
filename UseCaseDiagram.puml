@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/use-case-diagram
+
+
+Start-> (Show book info)
+Start-> (Search for book)
+Start-> (Add book)
+Start--> (Remove book)
+Start--> (Change book information)
+Start--> (Search for author)
+Start--> (Search for category)
+Start--> (Search for subcategory)
+Start--> (Add subcategory)
+Start---> (Remove subcategory)
+Start---> (Change subcategory)
+Start---> (Assign category to parent-category)
+Start---> (Move category to other parent-category)
+Start---> (Show all subcategories)
+Start---> (Read library from file)
+Start---> (Save library to file)
+(Add book)...
+(Show book info)->(Remove book)
+(Show book info)->(Add subcategory)
+(Show book info)->(Remove subcategory)
+(Show book info)->(Change subcategory)
+
+
+@enduml

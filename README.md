@@ -13,11 +13,11 @@
 - Wyszukanie podkategorii
 - Dodanie podkategorii
 - Usunięcie podkategorii
+- Zmiana podkategorii
 - Przypisanie kategorii do kategorii-matki
 - Wyświetlenie wszystkich podkategorii
 - Zapisanie biblioteki do pliku  
 - Odczyt biblioteki z pliku
-- Zmiana podkategorii
 - Przeniesienie kategorii do innej kategorii-matki
 ## Diagram przypadków użycia
 
