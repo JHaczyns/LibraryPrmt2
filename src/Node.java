@@ -15,7 +15,7 @@ public class Node<Book>{
     public void setParent(Node<Book> parent){
         parent.addChild();}
 
-    public void addChild(Node<Book> child){
+    public void addChild(Node<Book> child) {
         Node<Book> subCategory = new Node<Book>();
         child.setParent(this);
         this.subCategories.add(child);
@@ -44,6 +44,10 @@ public class Node<Book>{
     public void moveCategory(){}
 
     public void saveToFile(){}
+
+    public void readFromFile()[]
+
+    public void createCategory(){}
 
 }
 

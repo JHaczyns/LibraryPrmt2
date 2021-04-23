@@ -6,13 +6,15 @@ public class Book {
     private String author;
     private String category;
     private boolean isBorrowed;
+    private String isbn;
 
-    public Book(int id, String title, String category, String author, boolean isBorrowed) {
+    public Book(int id, String title, String category, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
         this.title = title;
         this.category = category;
         this.author = author;
         this.isBorrowed = isBorrowed;
+        this.isbn = isbn;
     }
 
     public void printInfo()
@@ -25,8 +27,8 @@ public class Book {
         return (
                 title + '\t' +
                 author + '\t' +
-                category
-        );
+                category + '\t' +
+                isbn);
     }
 
     public void changeBookInfo() throws IOException{}
