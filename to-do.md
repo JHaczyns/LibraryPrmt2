@@ -1,0 +1,18 @@
+-[x] Wyświetlenie informacji o książce --> printInfo
+-[ ] Baza książek (Node) 
+-[ ] Dodanie książki
+-[ ] Usunięcie książki
+-[ ] Zmiana informacji o książce
+-[ ] Wyszukanie książki
+-[ ] Wyszukanie Autora
+-[ ] Wyszukanie kategorii
+-[ ] Wyszukanie podkategorii
+-[ ] Dodanie podkategorii
+-[ ] Usunięcie podkategorii
+-[ ] Zmiana podkategorii
+-[ ] Przypisanie kategorii do kategorii-matki
+-[ ] Wyświetlenie wszystkich podkategorii
+-[ ] Zapisanie biblioteki do pliku  
+-[ ] Odczyt biblioteki z pliku
+-[ ] Przeniesienie kategorii do innej kategorii-matki
+-[ ] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
