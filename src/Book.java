@@ -10,6 +10,8 @@ public class Book {
     private String category;
     private boolean isBorrowed;
     private String isbn;
+    private String temp="";
+    private Integer tempint=1;
 
     public Book(int id, String title, String category, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
@@ -18,6 +20,10 @@ public class Book {
         this.author = author;
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
+    }
+  // Constructor for using addbook()
+    public Book() {
+
     }
 
     public void printInfo()
@@ -144,7 +150,136 @@ public class Book {
 
     //System asks for each parameter and combines it into an object of class Book
 
-    public void addBook(){}
+    public void addBook(){
+        Scanner scanner0 = new Scanner(System.in);
+        Scanner scanner1 = new Scanner(System.in);
+        Scanner scanner2 = new Scanner(System.in);
+        Scanner scanner3 = new Scanner(System.in);
+        Scanner scanner4 = new Scanner(System.in);
+
+        System.out.println("""
+                        ----------------------------------------------------
+                        Please follow instruction to add a new book. 
+                        Write asked element and click enter to go forward.
+                        To cancel write 0
+                        ----------------------------------------------------
+                        """
+        );
+
+        while (!temp.equals("0") || tempint!=0) {
+            System.out.println("""
+                    -------------
+                    Write BookID:
+                    -------------
+                    """
+            );
+            boolean success = false;
+            while (!success) {
+                tempint = scanner0.nextInt();
+                try {
+                    if (tempint == 0) {
+                        System.out.println("Cancelling...");
+                        break;
+                    } else {
+                        bookID = tempint;
+                        success = true;
+                    }
+                } catch (InputMismatchException e) {
+                    System.out.println("Integers only please");
+                    scanner0.next();
+                }
+            }
+            if(temp.equals("0") || tempint==0)break;
+
+            System.out.println("""
+                    -------------
+                    Write Title:
+                    -------------
+                    """
+            );
+            success = false;
+            while (!success) {
+
+                    temp = scanner1.nextLine();
+                    if (temp.equals("0")) {
+                        System.out.println("Cancelling...");
+                        break;
+                    } else {
+                        title = temp;
+                        success = true;
+                    }
+                }
+
+            if(temp.equals("0") || tempint==0)break;
+
+            System.out.println("""
+                    -------------
+                    Write Author:
+                    -------------
+                    """
+            );
+            success = false;
+            while (!success) {
+                temp = scanner2.nextLine();
+                if (temp.equals("0")) {
+                    System.out.println("Cancelling...");
+                    break;
+                } else {
+                    author = temp;
+                    success = true;
+                }
+            }
+            if(temp.equals("0") || tempint==0)break;
+
+            System.out.println("""
+                    -------------
+                    Write Category:
+                    -------------
+                    """
+            );
+            success = false;
+            while (!success) {
+                temp = scanner3.nextLine();
+                    if (temp.equals("0")) {
+                        System.out.println("Cancelling...");
+                        break;
+                    } else {
+                        category = temp;
+                        success = true;
+                    }
+
+
+            }
+
+            if(temp.equals("0") || tempint==0)break;
+
+            System.out.println("""
+                    ------------------
+                    Write ISBN number:
+                    ------------------
+                    """
+            );
+            success = false;
+            while (!success) {
+                temp = scanner4.nextLine();
+                    if (temp.equals("0")) {
+                        System.out.println("Cancelling...");
+                        break;
+                    } else {
+                        isbn = temp;
+                        success = true;
+                    }
+
+            }
+            if(temp.equals("0") || tempint==0)break;
+            System.out.println("""
+                    -------------------------------------
+                    Your book has been added successfully
+                    -------------------------------------
+                    """
+            );
+        }
+    }
 
     public void removeBook(Book book){
 
