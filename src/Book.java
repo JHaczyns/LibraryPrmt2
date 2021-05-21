@@ -10,8 +10,6 @@ public class Book {
     private String category;
     private boolean isBorrowed;
     private String isbn;
-    private String temp="";
-    private Integer tempint=1;
 
     public Book(int id, String title, String category, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
@@ -21,11 +19,11 @@ public class Book {
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
     }
-  // Constructor for using addbook()
+
+    // Constructor for using addbook()
     public Book() {
 
     }
-
     public void printInfo()
     {
         System.out.println(title + "\t" + author + "\t" + category);
@@ -41,8 +39,8 @@ public class Book {
     }
 
 
-    // System asks which parameter user wants to change
 
+    // System asks which parameter user wants to change
     public void changeBookInfo(Book book) throws IOException{
         System.out.println("""
                         ------------------------------------------
@@ -148,9 +146,13 @@ public class Book {
         }
     }
 
+
     //System asks for each parameter and combines it into an object of class Book
 
     public void addBook(){
+        String temp = "";
+        int tempint = 1;
+
         Scanner scanner0 = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
         Scanner scanner2 = new Scanner(System.in);
@@ -278,11 +280,12 @@ public class Book {
                     -------------------------------------
                     """
             );
+            break;
         }
     }
 
     public void removeBook(Book book){
-
+    // After Node
     }
 
     public String getTitle()

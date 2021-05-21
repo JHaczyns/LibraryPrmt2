@@ -1,8 +1,8 @@
 -[x] Wyświetlenie informacji o książce --> printInfo
 -[ ] Baza książek (Node) 
--[ ] Dodanie książki
+-[x] Dodanie książki
 -[ ] Usunięcie książki
--[ ] Zmiana informacji o książce
+-[x] Zmiana informacji o książce
 -[ ] Wyszukanie książki
 -[ ] Wyszukanie Autora
 -[ ] Wyszukanie kategorii
