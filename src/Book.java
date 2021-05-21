@@ -20,7 +20,7 @@ public class Book {
         this.isbn = isbn;
     }
 
-    // Constructor for using addbook()
+    // Constructor for using addBook()
     public Book() {
 
     }
@@ -284,8 +284,41 @@ public class Book {
         }
     }
 
-    public void removeBook(Book book){
-    // After Node
+    public void removeBook(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("What is the ID of the book you want to remove?");
+        String book2delete = scanner.nextLine();
+        //printInfo(Book2delete);
+        System.out.println(" ");
+        System.out.println("""
+                        Is that a book you want to delete?
+                        1. Yes
+                        2. No
+                        """
+        );
+        String param = scanner.nextLine();
+        param = param.toLowerCase();
+        while (true){
+            if (param.equals("yes") || param.contains("1")){
+                System.out.println("Are you sure you want to remove this book?");
+                if (param.equals("yes") || param.contains("1")){
+                    //removeBook(book2delete);
+                    System.out.println("Removing...");
+                    System.out.println("Book successfuly removed!");
+                }else if(param.equals("no") || param.contains("2")){
+                    System.out.println("Cancelling...");
+                    System.out.println("Proccess successfuly cancelled!");
+                    break;
+                }
+
+            } else if(param.equals("no") || param.contains("2")){
+                System.out.println("Cancelling...");
+                System.out.println("Proccess successfuly cancelled!");
+                break;
+            }
+        }
+
+
     }
 
     public String getTitle()
