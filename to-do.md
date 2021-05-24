@@ -18,3 +18,8 @@
 -[ ] Odczyt biblioteki z pliku (Node)
 -[ ] Przeniesienie kategorii do innej kategorii-matki (Node)
 -[ ] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu) (Node)
+ 
+-[ ] GUI
+-[ ] Ekran startowy (wybór użytkownika)
+-[ ] Wyświetlanie listy książek w kategorii
+
