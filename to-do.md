@@ -1,6 +1,8 @@
 -[x] Wyświetlenie informacji o książce --> printInfo
 -[x] Dodanie książki
 -[x] Zmiana informacji o książce
+-[ ] Podział na użytkowników (zarządzanie/wypożyczanie)
+-[ ] Dodanie użytkowników
 -[ ] Baza książek (Node)
 -[ ] Usunięcie książki (Node)
 -[ ] Wyszukanie książki (Node)
