@@ -1,6 +1,5 @@
 import java.io.IOException;
-import java.util.InputMismatchException;
-import java.util.Scanner;
+import java.util.*;
 
 
 public class Book {
@@ -10,20 +9,37 @@ public class Book {
     private String category;
     private boolean isBorrowed;
     private String isbn;
+    private String temp="";
+    private String subcategory;
+    private Integer tempint=1;
+    private ArrayList<String> categories =new ArrayList<String>();
+    private ArrayList<String> subcategories=new ArrayList<String>();
 
-    public Book(int id, String title, String category, String author, boolean isBorrowed, String isbn) {
+    // Constructor for using addbook() with arraylists as category and subcategory
+    public Book(int id, String title, ArrayList categories,ArrayList subcategories, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
         this.title = title;
-        this.category = category;
+        this.categories = categories;
+        this.subcategories=subcategories;
         this.author = author;
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
     }
-
-    // Constructor for using addBook()
-    public Book() {
-
+    // Constructor for using addbook() with strings as category and subcategory
+    public Book(int id, String title, String category,String subcategory, String author, boolean isBorrowed, String isbn) {
+        this.bookID = id;
+        this.title = title;
+        this.categories.add(category) ;
+        this.subcategories.add(subcategory);
+        this.author = author;
+        this.isBorrowed = isBorrowed;
+        this.isbn = isbn;
     }
+  // Constructor for using addbook()
+    public Book() {
+        addBook();
+    }
+
     public void printInfo()
     {
         System.out.println(title + "\t" + author + "\t" + category);
@@ -34,14 +50,15 @@ public class Book {
         return (
                 title + '\t' +
                 author + '\t' +
-                category + '\t' +
+                categories.toString() + '\t' +
+                subcategories.toString() + '\t' +
                 isbn);
     }
 
 
-
     // System asks which parameter user wants to change
-    public void changeBookInfo(Book book) throws IOException{
+
+    public void changeBookInfo() throws IOException{
         System.out.println("""
                         ------------------------------------------
                         Which parameter would you like to change?
@@ -49,7 +66,8 @@ public class Book {
                         2. Title
                         3. Author
                         4. Category
-                        5. ISBN number
+                        5. Subcategory
+                        6. ISBN number
                         0. Cancel
                         ------------------------------------------
                         """
@@ -87,8 +105,8 @@ public class Book {
                     break;
                 }
                 //Place to check if new ID is unique
-                System.out.println("Changing ID from " + book.getBookID() + " to " + newBookID);
-                book.setBookID(newBookID);
+                System.out.println("Changing ID from " + this.getBookID() + " to " + newBookID);
+                this.setBookID(newBookID);
             }
             case 2 -> {
                 String newTitle;
@@ -100,8 +118,8 @@ public class Book {
                         break;
                     }
                 }
-                System.out.println("Changing title from " + book.getTitle() + " to " + newTitle);
-                book.setTitle(newTitle);
+                System.out.println("Changing title from " + this.getTitle() + " to " + newTitle);
+                this.setTitle(newTitle);
             }
             case 3 -> {
                 String newAuthor;
@@ -113,23 +131,53 @@ public class Book {
                         break;
                     }
                 }
-                System.out.println("Changing author from " + book.getAuthor() + " to " + newAuthor);
-                book.setAuthor(newAuthor);
+                System.out.println("Changing author from " + this.getAuthor() + " to " + newAuthor);
+                this.setAuthor(newAuthor);
             }
             case 4 -> {
                 String newCategory;
-                System.out.println("What category would you like to change this book to?");
-                while (!(newCategory = scanner.nextLine()).isEmpty()) {
-                    newCategory = scanner.nextLine();
+                String oldCategory;
+                System.out.println("What category would you like to change in this book?");
+                System.out.println(categories.toString());
+                System.out.println("Write old category: \n");
+                oldCategory = scanner.next();
+                System.out.println("Write new category: \n");
+                newCategory = scanner.next();
+                if(newCategory!=null&&oldCategory!=null){
+                    System.out.println("Changing category from " + oldCategory + " to " + newCategory);
+                    this.categories.remove(oldCategory);
+                    this.categories.add(newCategory);
+                }
+                if (!(newCategory ==null))   {
                     if (scanner.nextLine().equals("0")) {
                         System.out.println("Cancelling...");
                         break;
                     }
                 }
-                System.out.println("Changing category from " + book.getCategory() + " to " + newCategory);
-                book.setCategory(newCategory);
+
             }
             case 5 -> {
+                String newSubCategory;
+                String oldSubCategory = null;
+                System.out.println("What category would you like to change in this book?");
+                System.out.println(subcategories.toString());
+                System.out.println("Write old category: \n");
+                oldSubCategory = scanner.next();
+                System.out.println("Write new category: \n");
+                newSubCategory = scanner.next();
+                if(newSubCategory!=null&&oldSubCategory!=null){
+                    System.out.println("Changing subcategory from " + oldSubCategory + " to " + newSubCategory);
+                    this.subcategories.remove(oldSubCategory);
+                    this.subcategories.add(newSubCategory);
+                }
+                if (!(newSubCategory ==null)) {
+                    if (scanner.nextLine().equals("0")) {
+                        System.out.println("Cancelling...");
+                        break;
+                    }
+                }
+            }
+            case 6 -> {
                 String newISBN;
                 System.out.println("What ISBN would you like to change this book to?");
                 while (!(newISBN = scanner.nextLine()).isEmpty()) {
@@ -139,19 +187,16 @@ public class Book {
                         break;
                     }
                 }
-                System.out.println("Changing ISBN from " + book.getIsbn() + " to " + newISBN);
-                book.setIsbn(newISBN);
+                System.out.println("Changing ISBN from " + this.getIsbn() + " to " + newISBN);
+                this.setIsbn(newISBN);
             }
             case 0 -> System.out.println("Cancelling...");
         }
     }
 
-
     //System asks for each parameter and combines it into an object of class Book
 
     public void addBook(){
-        String temp = "";
-        int tempint = 1;
 
         Scanner scanner0 = new Scanner(System.in);
         Scanner scanner1 = new Scanner(System.in);
@@ -167,8 +212,7 @@ public class Book {
                         ----------------------------------------------------
                         """
         );
-
-        while (!temp.equals("0") || tempint!=0) {
+        while (!temp.equals("0") && tempint!=0) {
             System.out.println("""
                     -------------
                     Write BookID:
@@ -181,6 +225,8 @@ public class Book {
                 try {
                     if (tempint == 0) {
                         System.out.println("Cancelling...");
+                        temp="0";
+
                         break;
                     } else {
                         bookID = tempint;
@@ -235,7 +281,7 @@ public class Book {
 
             System.out.println("""
                     -------------
-                    Write Category:
+                    Write categories in format: category1 category2 etc:
                     -------------
                     """
             );
@@ -246,13 +292,39 @@ public class Book {
                         System.out.println("Cancelling...");
                         break;
                     } else {
-                        category = temp;
+                        String[] temparr = temp.split(" ");
+                        for(String i:temparr){
+                            categories.add(i);
+                        }
                         success = true;
                     }
 
 
             }
+            if(temp.equals("0") || tempint==0)break;
 
+            System.out.println("""
+                    -------------
+                    Write subcategories in format: subcategory1 subcategory2 etc:
+                    -------------
+                    """
+            );
+            success = false;
+            while (!success) {
+                temp = scanner3.nextLine();
+                if (temp.equals("0")) {
+                    System.out.println("Cancelling...");
+                    break;
+                } else {
+                    String[] temparr = temp.split(" ");
+                    for(String i:temparr){
+                        subcategories.add(i);
+                    }
+                    success = true;
+                }
+
+
+            }
             if(temp.equals("0") || tempint==0)break;
 
             System.out.println("""
@@ -280,45 +352,14 @@ public class Book {
                     -------------------------------------
                     """
             );
-            break;
+
+        break;
+
         }
+
     }
 
     public void removeBook(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("What is the ID of the book you want to remove?");
-        String book2delete = scanner.nextLine();
-        //printInfo(Book2delete);
-        System.out.println(" ");
-        System.out.println("""
-                        Is that a book you want to delete?
-                        1. Yes
-                        2. No
-                        """
-        );
-        String param = scanner.nextLine();
-        param = param.toLowerCase();
-        while (true){
-            if (param.equals("yes") || param.contains("1")){
-                System.out.println("Are you sure you want to remove this book?");
-                if (param.equals("yes") || param.contains("1")){
-                    //removeBook(book2delete);
-                    System.out.println("Removing...");
-                    System.out.println("Book successfuly removed!");
-                }else if(param.equals("no") || param.contains("2")){
-                    System.out.println("Cancelling...");
-                    System.out.println("Proccess successfuly cancelled!");
-                    break;
-                }
-
-            } else if(param.equals("no") || param.contains("2")){
-                System.out.println("Cancelling...");
-                System.out.println("Proccess successfuly cancelled!");
-                break;
-            }
-        }
-
-
     }
 
     public String getTitle()
