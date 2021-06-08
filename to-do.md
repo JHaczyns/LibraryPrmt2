@@ -1,25 +1,18 @@
 -[x] Wyświetlenie informacji o książce --> printInfo
+-[x] Baza książek (Array list) 
 -[x] Dodanie książki
+-[x] Usunięcie książki
 -[x] Zmiana informacji o książce
--[ ] Podział na użytkowników (zarządzanie/wypożyczanie)
--[ ] Dodanie użytkowników
--[ ] Baza książek (Node)
--[ ] Usunięcie książki (Node)
--[ ] Wyszukanie książki (Node)
--[ ] Wyszukanie Autora (Node)
--[ ] Wyszukanie kategorii (Node)
--[ ] Wyszukanie podkategorii (Node)
--[ ] Dodanie podkategorii (Node)
--[ ] Usunięcie podkategorii (Node)
--[ ] Zmiana podkategorii (Node)
--[ ] Przypisanie kategorii do kategorii-matki (Node)
--[ ] Wyświetlenie wszystkich podkategorii (Node)
--[ ] Zapisanie biblioteki do pliku (Node)
--[ ] Odczyt biblioteki z pliku (Node)
--[ ] Przeniesienie kategorii do innej kategorii-matki (Node)
--[ ] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu) (Node)
- 
--[ ] GUI
--[ ] Ekran startowy (wybór użytkownika)
--[ ] Wyświetlanie listy książek w kategorii
-
+-[x] Wyszukanie książki
+-[x] Wyszukanie Autora
+-[] Wyszukanie kategorii
+-[ ] Wyszukanie podkategorii
+-[x] Dodanie podkategorii
+-[ ] Usunięcie podkategorii
+-[x] Zmiana podkategorii
+-[ ] Przypisanie kategorii do kategorii-matki
+-[ ] Wyświetlenie wszystkich podkategorii
+-[ ] Zapisanie biblioteki do pliku  
+-[ ] Odczyt biblioteki z pliku
+-[ ] Przeniesienie kategorii do innej kategorii-matki
+-[ ] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
