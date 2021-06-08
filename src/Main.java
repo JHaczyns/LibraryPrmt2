@@ -34,7 +34,7 @@ public class Main {
                 case 1: {
                     try {
                         Book book = new Book();
-                        if(book.getIsbn()!=null) library.addBook(book);
+                        if((book.getIsbn()!=null))library.addBook(book);
                     }
                     finally {
                         break;
@@ -63,6 +63,8 @@ public class Main {
                         1. Title
                         2. Author
                         3. Id
+                        4. Category
+                        5. Subcategory
                         ------------------------------------------
                         """
                     );
@@ -90,6 +92,14 @@ public class Main {
                         }
                         case 3:{
                            library.searchId(scanner.nextInt());
+                            break;
+                        }
+                        case 4:{
+                            library.searchCategory(scanner.nextLine());
+                            break;
+                        }
+                        case 5:{
+                            library.searchSubcategory(scanner.nextLine());
                             break;
                         }
 
