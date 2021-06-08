@@ -15,8 +15,7 @@ public class Book {
     private ArrayList<String> categories =new ArrayList<String>();
     private ArrayList<String> subcategories=new ArrayList<String>();
 
-
-    // Constructor for using addBook() with ArrayLists as category and subcategory
+    // Constructor for using addbook() with arraylists as category and subcategory
     public Book(int id, String title, ArrayList categories,ArrayList subcategories, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
         this.title = title;
@@ -26,7 +25,7 @@ public class Book {
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
     }
-    // Constructor for using addBook() with strings as category and subcategory
+    // Constructor for using addbook() with strings as category and subcategory
     public Book(int id, String title, String category,String subcategory, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
         this.title = title;
@@ -36,7 +35,7 @@ public class Book {
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
     }
-  // Constructor for using addBook()
+  // Constructor for using addbook()
     public Book() {
         addBook();
     }
@@ -49,11 +48,10 @@ public class Book {
     @Override
     public String toString() {
         return (
-                bookID +";"+
-                title  +";"+
-                author  +";"+
-                categories +";"+
-                subcategories  +";"+
+                title + '\t' +
+                author + '\t' +
+                categories.toString() + '\t' +
+                subcategories.toString() + '\t' +
                 isbn);
     }
 
@@ -197,6 +195,7 @@ public class Book {
     }
 
     //System asks for each parameter and combines it into an object of class Book
+
     public void addBook(){
 
         Scanner scanner0 = new Scanner(System.in);
@@ -347,7 +346,12 @@ public class Book {
 
             }
             if(temp.equals("0") || tempint==0)break;
-
+            System.out.println("""
+                    -------------------------------------
+                    Your book has been added successfully
+                    -------------------------------------
+                    """
+            );
 
         break;
 
@@ -366,19 +370,6 @@ public class Book {
     public String getCategory()
     {
         return category;
-    }
-    public String getSubcategory()
-    {
-        return subcategory;
-    }
-    public ArrayList<String> getSubcategories()
-    {
-        return subcategories;
-    }
-
-    public ArrayList<String> getCategories()
-    {
-        return categories;
     }
 
     public String getAuthor()
