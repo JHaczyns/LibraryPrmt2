@@ -1,15 +1,15 @@
 -[x] Wyświetlenie informacji o książce --> printInfo
--[ ] Baza książek (Node) 
--[ ] Dodanie książki
--[ ] Usunięcie książki
--[ ] Zmiana informacji o książce
--[ ] Wyszukanie książki
--[ ] Wyszukanie Autora
--[ ] Wyszukanie kategorii
+-[x] Baza książek (Array list) 
+-[x] Dodanie książki
+-[x] Usunięcie książki
+-[x] Zmiana informacji o książce
+-[x] Wyszukanie książki
+-[x] Wyszukanie Autora
+-[] Wyszukanie kategorii
 -[ ] Wyszukanie podkategorii
--[ ] Dodanie podkategorii
+-[x] Dodanie podkategorii
 -[ ] Usunięcie podkategorii
--[ ] Zmiana podkategorii
+-[x] Zmiana podkategorii
 -[ ] Przypisanie kategorii do kategorii-matki
 -[ ] Wyświetlenie wszystkich podkategorii
 -[ ] Zapisanie biblioteki do pliku  
