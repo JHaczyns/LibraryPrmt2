@@ -346,12 +346,7 @@ public class Book {
 
             }
             if(temp.equals("0") || tempint==0)break;
-            System.out.println("""
-                    -------------------------------------
-                    Your book has been added successfully
-                    -------------------------------------
-                    """
-            );
+
 
         break;
 
@@ -370,6 +365,19 @@ public class Book {
     public String getCategory()
     {
         return category;
+    }
+    public String getSubcategory()
+    {
+        return subcategory;
+    }
+    public ArrayList<String> getSubcategories()
+    {
+        return subcategories;
+    }
+
+    public ArrayList<String> getCategories()
+    {
+        return categories;
     }
 
     public String getAuthor()

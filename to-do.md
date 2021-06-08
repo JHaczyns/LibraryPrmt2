@@ -5,14 +5,14 @@
 -[x] Zmiana informacji o książce
 -[x] Wyszukanie książki
 -[x] Wyszukanie Autora
--[] Wyszukanie kategorii
--[ ] Wyszukanie podkategorii
+-[x] Wyszukanie kategorii
+-[x] Wyszukanie podkategorii
 -[x] Dodanie podkategorii
 -[ ] Usunięcie podkategorii
 -[x] Zmiana podkategorii
 -[ ] Przypisanie kategorii do kategorii-matki
--[ ] Wyświetlenie wszystkich podkategorii
+-[x] Wyświetlenie wszystkich podkategorii
 -[ ] Zapisanie biblioteki do pliku  
 -[ ] Odczyt biblioteki z pliku
 -[ ] Przeniesienie kategorii do innej kategorii-matki
--[ ] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
+-[x] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
