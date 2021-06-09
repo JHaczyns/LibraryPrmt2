@@ -19,7 +19,7 @@ public class ExportTable {
 
         FileWriter writer = null;
         try {
-            writer = new FileWriter("lib.csv");
+            writer = new FileWriter("lib.csv",true);
         } catch (IOException e) {
             e.printStackTrace();
         }
