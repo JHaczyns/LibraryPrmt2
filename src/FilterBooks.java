@@ -20,7 +20,7 @@ public class FilterBooks extends JFrame {
             table =tablecsv.getTable("lib.csv");
             model =table.getModel();
 
-            table.setModel(model);
+           table.setModel(model);
 
             final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
             table.setRowSorter(sorter);
@@ -48,7 +48,6 @@ public class FilterBooks extends JFrame {
                     }
                 }
             });
-            panel.getRootPane().setDefaultButton(button);
             add(button,BorderLayout.SOUTH);
             setSize(400, 300);
             setLocationRelativeTo(null);

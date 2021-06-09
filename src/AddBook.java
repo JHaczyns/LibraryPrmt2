@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class AddBook extends JFrame implements ActionListener{
     JButton AddBook = new JButton("Add book to library");
 
-    JLabel ID = new JLabel("ID");
+    JLabel ID = new JLabel("Id");
     JTextField Idtxt = new JTextField(6);
 
     JLabel Title = new JLabel("Title");
@@ -24,12 +24,12 @@ public class AddBook extends JFrame implements ActionListener{
     JLabel Subcategory = new JLabel("Subcategory");
     JTextField Subcategorytxt = new JTextField(6);
 
-    JLabel Isbn = new JLabel("ISBN");
+    JLabel Isbn = new JLabel("Isbn");
     JTextField Isbntxt = new JTextField(6);
     Library library;
     JPanel panel = new JPanel();
 
-    public Library returnLibrary(){
+    public Library returnLibrart(){
         return library;
     }
     public  AddBook(Library library){
@@ -127,7 +127,7 @@ public class AddBook extends JFrame implements ActionListener{
                 String isbn = Titletxt.getText();
                 Book book=new Book(bookID,title,categories,subcategories,author,isBorrowed,isbn);
                 library.addBook(book);
-                returnLibrary();
+                returnLibrart();
                 new ExportTable(library.Allbooks);
             } catch (NumberFormatException numberFormatException) {
                 msgbox("Id musi być liczbą");

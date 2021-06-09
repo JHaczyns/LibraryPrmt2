@@ -56,7 +56,7 @@ public class adminGUI implements ActionListener{
             FilterBooks sf= new FilterBooks();
         }
         else if (e.getSource()==add_book) {
-            library= new AddBook(library).returnLibrary();
+            library= new AddBook(library).returnLibrart();
 
 
         }

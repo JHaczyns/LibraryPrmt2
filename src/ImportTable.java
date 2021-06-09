@@ -39,7 +39,9 @@ public class ImportTable {
                 String line = tableLines[i].toString().trim();
                 String[] dataRow = line.split(";(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 vectorStrings = new Vector<String>();
-                Collections.addAll(vectorStrings, dataRow);
+                for (int j =0; j < dataRow.length; j++) {
+                    vectorStrings.add(dataRow[j]);
+                }
                 vectorVectorStringsData.add(vectorStrings);
             }
 
