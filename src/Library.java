@@ -9,20 +9,7 @@ public class Library {
         if(!IsIdTaken(book.getBookID())) {
             Allbooks.add(book);
             Idlist.add(book.getBookID());
-            System.out.println("""
-                    -------------------------------------
-                    Your book has been added successfully
-                    -------------------------------------
-                    """
-            );
         }
-        else   System.out.println("""
-                    -------------------------------------
-                    Id is taken
-                    -------------------------------------
-                    """
-        );
-
     }
     public void removeBook(int id){
         for (Book book:Allbooks)
