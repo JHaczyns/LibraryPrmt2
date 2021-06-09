@@ -15,6 +15,7 @@ public class Book {
     private ArrayList<String> categories =new ArrayList<String>();
     private ArrayList<String> subcategories=new ArrayList<String>();
 
+
     // Constructor for using addbook() with arraylists as category and subcategory
     public Book(int id, String title, ArrayList categories,ArrayList subcategories, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
@@ -48,10 +49,11 @@ public class Book {
     @Override
     public String toString() {
         return (
-                title + '\t' +
-                author + '\t' +
-                categories.toString() + '\t' +
-                subcategories.toString() + '\t' +
+                bookID +";"+
+                title  +";"+
+                author  +";"+
+                categories +";"+
+                subcategories  +";"+
                 isbn);
     }
 

@@ -12,7 +12,7 @@
 -[x] Zmiana podkategorii
 -[ ] Przypisanie kategorii do kategorii-matki
 -[x] Wyświetlenie wszystkich podkategorii
--[ ] Zapisanie biblioteki do pliku  
--[ ] Odczyt biblioteki z pliku
+-[x] Zapisanie biblioteki do pliku  
+-[x] Odczyt biblioteki z pliku
 -[ ] Przeniesienie kategorii do innej kategorii-matki
 -[x] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
