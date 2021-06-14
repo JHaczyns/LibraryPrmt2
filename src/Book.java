@@ -16,7 +16,7 @@ public class Book {
     private ArrayList<String> subcategories=new ArrayList<String>();
 
 
-    // Constructor for using addbook() with arraylists as category and subcategory
+    // Constructor for using addBook() with ArrayLists as category and subcategory
     public Book(int id, String title, ArrayList categories,ArrayList subcategories, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
         this.title = title;
@@ -26,7 +26,7 @@ public class Book {
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
     }
-    // Constructor for using addbook() with strings as category and subcategory
+    // Constructor for using addBook() with strings as category and subcategory
     public Book(int id, String title, String category,String subcategory, String author, boolean isBorrowed, String isbn) {
         this.bookID = id;
         this.title = title;
@@ -36,7 +36,7 @@ public class Book {
         this.isBorrowed = isBorrowed;
         this.isbn = isbn;
     }
-  // Constructor for using addbook()
+  // Constructor for using addBook()
     public Book() {
         addBook();
     }
@@ -197,7 +197,6 @@ public class Book {
     }
 
     //System asks for each parameter and combines it into an object of class Book
-
     public void addBook(){
 
         Scanner scanner0 = new Scanner(System.in);

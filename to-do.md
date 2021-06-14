@@ -8,11 +8,15 @@
 -[x] Wyszukanie kategorii
 -[x] Wyszukanie podkategorii
 -[x] Dodanie podkategorii
--[ ] Usunięcie podkategorii
 -[x] Zmiana podkategorii
--[ ] Przypisanie kategorii do kategorii-matki
 -[x] Wyświetlenie wszystkich podkategorii
 -[x] Zapisanie biblioteki do pliku  
 -[x] Odczyt biblioteki z pliku
--[ ] Przeniesienie kategorii do innej kategorii-matki
 -[x] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
+-[ ] Wypożyczanie
+-[ ] Usuwanie książki z bazy
+-[ ] Zmiana informacji o książce
+ 
+-[ ] ~~Usunięcie podkategorii~~
+-[ ] ~~Przypisanie kategorii do kategorii-matki~~
+-[ ] ~~Przeniesienie kategorii do innej kategorii-matki~~
