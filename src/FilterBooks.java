@@ -6,6 +6,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 
@@ -37,17 +38,24 @@ public class FilterBooks extends JFrame {
             button.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String text = filterText.getText();
-                    if(text.length() == 0) {
-                        sorter.setRowFilter(null);
-                    } else {
-                        try {
-                            sorter.setRowFilter(RowFilter.regexFilter(text));
-                        } catch(PatternSyntaxException pse) {
-                            System.out.println("Bad regex pattern");
+                    String text2 = Pattern.quote(filterText.getText());
+                    String regex = String.format("^%s$", text2);
+                    sorter.setRowFilter(RowFilter.regexFilter(regex));
+                    try {
+                        Integer.parseInt(text);
+                        sorter.setRowFilter(RowFilter.regexFilter(regex));
+                    } catch (NumberFormatException a) {
+                        if (text.length() == 0) {
+                            sorter.setRowFilter(null);
+                        } else {
+                            try {
+                                sorter.setRowFilter(RowFilter.regexFilter(text));
+                            } catch (PatternSyntaxException pse) {
+                                System.out.println("Bad regex pattern");
+                            }
                         }
                     }
-                }
-            });
+                } });
             panel.getRootPane().setDefaultButton(button);
             add(button,BorderLayout.SOUTH);
             setSize(400, 300);
