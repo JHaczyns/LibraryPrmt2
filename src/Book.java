@@ -92,10 +92,6 @@ public class Book {
         return bookID;
     }
 
-    public void setBookID(int bookID) {
-        this.bookID = bookID;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }

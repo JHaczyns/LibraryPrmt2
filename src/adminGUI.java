@@ -20,7 +20,7 @@ public class adminGUI implements ActionListener{
         panel.setLayout(null);
         label.setBounds(65, 20, 200, 25);
         add_book.setBounds(65, 50, 150, 25);
-        check_all_books.setBounds(65, 140, 150, 25);
+        check_all_books.setBounds(65, 80, 150, 25);
         logout.setBounds(65, 170, 150, 25);
 
         panel.add(label);

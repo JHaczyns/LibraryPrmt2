@@ -15,10 +15,6 @@ public class Login extends JFrame {
     JButton help = new JButton("HELP");
     JButton QUIT = new JButton("QUIT");
 
-    //TYLKO DO TESTÓW, ŻEBY SZYBCIEJ SPRAWDZAĆ CZY DZIAŁA
-    JButton admin = new JButton("admin");
-    JButton user = new JButton("user");
-
 
     public Login() {
         frame.setSize(300, 200);
@@ -39,13 +35,6 @@ public class Login extends JFrame {
         button.setBounds(10, 100, 80, 25);
         help.setBounds(10,130,80,25);
         QUIT.setBounds(200,130,80,25);
-
-        //TYLKO TYMCZASOWE, POTEM USUNĄĆ
-        admin.setBounds(100, 100, 80, 25);
-        user.setBounds(100, 130, 80, 25);
-        panel.add(admin);
-        panel.add(user);
-        //
 
         panel.add(help);
         panel.add(button);
@@ -84,24 +73,6 @@ public class Login extends JFrame {
             }
         });
 
-        //TYLKO TYMCZASOWE, POTEM USUNĄĆ
-        admin.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                loginStatus = "admin";
-                new adminGUI();
-            }
-        });
-        user.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-                loginStatus = "user";
-                new userGUI();
-            }
-        });
-        //
 
         QUIT.addActionListener(new ActionListener() {
             @Override

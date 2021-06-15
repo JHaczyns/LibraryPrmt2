@@ -28,7 +28,7 @@ public class userGUI implements ActionListener{
 
         label.setBounds(65, 20, 200, 25);
         check_all_books.setBounds(65, 50, 150, 25);
-        logout.setBounds(65, 110, 150, 25);
+        logout.setBounds(65, 80, 150, 25);
 
         panel.add(label);
         panel.add(check_all_books);

@@ -69,6 +69,8 @@ public class FilterBooks extends JFrame {
                 int dialogResult = JOptionPane.showConfirmDialog (null, "Do you want to remove book: " + library.searchId(id).toString(), "Confirm", dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
                     library.removeBook(id);
+                    new ExportTable(library);
+                    dispose();
                 }
                 }
             });
@@ -89,6 +91,8 @@ public class FilterBooks extends JFrame {
                             }
                     }
                 }
+                    new ExportTable(library);
+                    dispose();
                 }
             });
 
