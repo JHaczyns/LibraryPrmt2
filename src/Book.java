@@ -49,12 +49,13 @@ public class Book {
     @Override
     public String toString() {
         return (
-                bookID +";"+
-                title  +";"+
-                author  +";"+
-                categories +";"+
-                subcategories  +";"+
-                isbn);
+                        bookID +";"+
+                        title  +";"+
+                        categories +";"+
+                        subcategories +";"+
+                        author  +";"+
+                        isBorrowed +";"+
+                        isbn);
     }
 
 
@@ -422,6 +423,8 @@ public class Book {
     public void setIsbn(String isbn) {
         this.isbn = isbn;
     }
+
+
 
 
 }

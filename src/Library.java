@@ -1,32 +1,35 @@
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Library {
-    ArrayList<Book> Allbooks=new ArrayList<Book>();
-    ArrayList<Integer> Idlist=new ArrayList<Integer>();
+    public static ArrayList<Book> allBooks=new ArrayList<Book>();
+    public static ArrayList<Integer> idList= new ArrayList<>();
+
+
     public void addBook(Book book){
         if(!IsIdTaken(book.getBookID())) {
-            Allbooks.add(book);
-            Idlist.add(book.getBookID());
+            allBooks.add(book);
+            idList.add(book.getBookID());
         }
     }
-    public void removeBook(int id){
-        for (Book book:Allbooks)
+    public void removeBook(Integer id){
+        ArrayList<Book> toDelete = new ArrayList();
+        for (Book book:allBooks)
             if (book.getBookID()==id){
-                Allbooks.remove(book);
-                Idlist.remove(book.getBookID());
+                idList.remove(Integer.valueOf(id));
+                toDelete.add(book);
+                break;
             }
+        for (Book book : toDelete) {
+            allBooks.remove(book);
+        }
     }
     public boolean IsIdTaken(int id){
-        for (int I:Idlist){
-            if (I==id)
-                return true;
-        }
-        return false;
+        return idList.contains(id);
     }
     public void changeInfo(int id){
-        for (Book book:Allbooks)
+        for (Book book:allBooks)
             if (book.getBookID()==id){
                 try {
                     book.changeBookInfo();
@@ -42,25 +45,25 @@ public class Library {
         book.setCategory(null);
     }
     public void getAllTitles(){
-        for (Book book:Allbooks){
+        for (Book book:allBooks){
             System.out.println( book.getTitle());
         }
 
     }
     public void getAllInfo(){
-        for (Book book:Allbooks){
+        for (Book book:allBooks){
             System.out.println( book);
         }
 
     }
     public void searchTitles(String title){
-        for (Book book:Allbooks){
+        for (Book book:allBooks){
             if (book.getTitle()==title) System.out.println( book);
         }
 
     }
     public void searchCategory(String category){
-        for (Book book:Allbooks){
+        for (Book book:allBooks){
             for (String cat:book.getCategories())
             { if (cat==category) System.out.println(book);
             }
@@ -68,7 +71,7 @@ public class Library {
 
     }
     public void searchSubcategory(String subcategory){
-        for (Book book:Allbooks){
+        for (Book book:allBooks){
             for (String subc:book.getSubcategories())
                   { if (subc==subcategory) System.out.println(book);
             }
@@ -76,15 +79,18 @@ public class Library {
 
     }
     public void searchAuthors(String author){
-        for (Book book:Allbooks){
+        for (Book book:allBooks){
             if (book.getAuthor()==author) System.out.println( book);
         }
     }
-    public void searchId(int id){
-        for (Book book:Allbooks){
-            if (book.getBookID()==id) System.out.println( book);
+    public Book searchId(int id){
+        for (Book book:allBooks){
+            if (book.getBookID()==id)
+                return book;
         }
+        return null;
     }
+
     public String getTitle(Book book){
         return book.getTitle();
     }

@@ -9,23 +9,26 @@ import java.util.stream.Collectors;
 
 public class ExportTable {
 
-    public ExportTable(ArrayList arrayList) {
+    public ExportTable() {
 
 
-        List<Book> list = arrayList;
-
-
-
+        ArrayList<Book> list = Library.allBooks;
 
         FileWriter writer = null;
         try {
-            writer = new FileWriter("lib.csv",true);
+            writer = new FileWriter("lib.csv");
         } catch (IOException e) {
             e.printStackTrace();
         }
         try {
+            int i = 0;
             for (Book book:list) {
-                writer.write(book.toString()+"\n");
+                if (i == 0) {
+                    writer.write(book.toString().replace("[", "").replace("]", ""));
+                } else {
+                    writer.write("\n" + book.toString().replace("[", "").replace("]", ""));
+                }
+                i++;
             }
             writer.close();
         } catch (IOException e) {
@@ -38,6 +41,7 @@ public class ExportTable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        Library.idList.clear();
     }
 
 }

@@ -4,6 +4,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 public class AddBook extends JFrame implements ActionListener{
     JButton AddBook = new JButton("Add book to library");
@@ -13,7 +15,6 @@ public class AddBook extends JFrame implements ActionListener{
 
     JLabel Title = new JLabel("Title");
     JTextField Titletxt = new JTextField(6);
-
 
     JLabel Author = new JLabel("Author");
     JTextField Authortxt = new JTextField(6);
@@ -34,6 +35,7 @@ public class AddBook extends JFrame implements ActionListener{
     }
     public  AddBook(Library library){
         this.library=library;
+
 
 
         setVisible(true);
@@ -93,13 +95,6 @@ public class AddBook extends JFrame implements ActionListener{
         add(panel);
         pack();
 
-
-
-
-
-
-
-
     }
     private void msgbox(String s) {
         JOptionPane.showMessageDialog(null, s);
@@ -108,32 +103,60 @@ public class AddBook extends JFrame implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==AddBook){
-            try {int bookID = Integer.valueOf(Idtxt.getText());
-                String title = Titletxt.getText();
-                String author= Authortxt.getText();
-                ArrayList categories = new ArrayList<>();
-                String[] category=Categorytxt.getText().split(" ");
-                for (String s:category
-                     ) {
-                    categories.add(s);
-                }
-                ArrayList subcategories = new ArrayList<>();
-                String[] subcategory=Subcategorytxt.getText().split(" ");
-                for (String s:subcategory
-                ) {
-                    subcategories.add(s);
-                }
-                Boolean isBorrowed = false;
-                String isbn = Titletxt.getText();
-                Book book=new Book(bookID,title,categories,subcategories,author,isBorrowed,isbn);
-                library.addBook(book);
-                returnLibrary();
-                new ExportTable(library.Allbooks);
-            } catch (NumberFormatException numberFormatException) {
-                msgbox("Id musi być liczbą");
-            }
+            try {
+                int bookID = Integer.parseInt(Idtxt.getText());
+                    if (!Library.idList.contains(bookID)) {
+                        String title = Titletxt.getText();
+                        if (title.equals("")) {
+                            throw new AssertionError();
+                        }
+                        String author = Authortxt.getText();
+                        if (author.equals("")) {
+                            throw new AssertionError();
+                        }
+                        ArrayList categories = new ArrayList<>();
+                        String[] category = Categorytxt.getText().split(" ");
+                        for (String s:category) {
+                            categories.add(s);
+                        }
+                        if (categories.isEmpty()) {
+                            throw new AssertionError();
+                        }
+                        ArrayList subcategories = new ArrayList<>();
+                        String[] subcategory = Subcategorytxt.getText().split(" ");
+                        for (String s:subcategory) {
+                            subcategories.add(s);
+                        }
+                        if (subcategories.isEmpty()) {
+                            throw new AssertionError();
+                        }                        String isbn = Isbntxt.getText();
+                        if (isbn.equals("")) {
+                            throw new AssertionError();
+                        }
 
+                        Book book = new Book(bookID, title, categories, subcategories, author, false, isbn);
+                        library.addBook(book);
+                        returnLibrary();
+                        new ExportTable();
 
+                        Idtxt.setText("");
+                        Titletxt.setText("");
+                        Authortxt.setText("");
+                        Categorytxt.setText("");
+                        Subcategorytxt.setText("");
+                        Isbntxt.setText("");
+
+                    } else {
+                        msgbox("Book with given ID already exists in library");
+                    }
+
+                } catch (NumberFormatException numberFormatException) {
+                    msgbox("ID must be an integer");
+                }
+
+                catch (AssertionError assertionError) {
+                   msgbox("Fields must not be empty");
+                }
         }
-    }
-}
+    }}
+

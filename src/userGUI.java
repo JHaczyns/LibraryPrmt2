@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class userGUI implements ActionListener{
+
+    private JTable table;
     Library library = new Library();
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
@@ -14,6 +16,9 @@ public class userGUI implements ActionListener{
     JButton search_for_book = new JButton("Search for book");
     JButton logout = new JButton("Logout");
     public userGUI(){
+        ImportTable tablecsv = new ImportTable();
+        table =tablecsv.getTable(library,"lib.csv");
+
         frame.setSize(400, 200);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         panel.setLayout(null);
@@ -44,8 +49,9 @@ public class userGUI implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
+
         if (e.getSource()==check_all_books) {
-            FilterBooks sf= new FilterBooks();
+            FilterBooks sf= new FilterBooks(library);
         }
         else if(e.getSource()==search_for_book){
 

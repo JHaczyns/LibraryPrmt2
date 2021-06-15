@@ -1,26 +1,23 @@
 import javax.swing.*;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
 
 public class FilterBooks extends JFrame {
-        private JTable table;
-        private TableModel model;
-        private DefaultTableModel dftable = new DefaultTableModel();
-        String headers[] = { "Title ","author","cat","subcat","isbn" };
 
-        public FilterBooks() {
+
+
+    public FilterBooks(Library library) {
             ImportTable tablecsv = new ImportTable();
-            table =tablecsv.getTable("lib.csv");
-            model =table.getModel();
-
+            JTable table =tablecsv.getTable(library,"lib.csv");
+            TableModel model = table.getModel();
             table.setModel(model);
 
             final TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(model);
@@ -34,8 +31,9 @@ public class FilterBooks extends JFrame {
             final JTextField filterText = new JTextField("");
             panel.add(filterText, BorderLayout.CENTER);
             add(panel, BorderLayout.NORTH);
-            JButton button = new JButton("Filter");
-            button.addActionListener(new ActionListener() {
+            JButton filter = new JButton("Filter");
+            JButton remove = new JButton("Remove");
+            filter.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String text = filterText.getText();
                     String text2 = Pattern.quote(filterText.getText());
@@ -55,13 +53,47 @@ public class FilterBooks extends JFrame {
                             }
                         }
                     }
-                } });
-            panel.getRootPane().setDefaultButton(button);
-            add(button,BorderLayout.SOUTH);
+                }
+            });
+
+            remove.addActionListener(e ->
+            {
+                int row = table.getSelectedRow();
+                if (row != -1) {
+                    int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
+                int dialogButton =  JOptionPane.YES_NO_OPTION;
+                int dialogResult = JOptionPane.showConfirmDialog (null, "Do you want to remove book: " + library.searchId(id).toString(), "Confirm", dialogButton);
+                if(dialogResult == JOptionPane.YES_OPTION){
+//                    library.removeBook(id);
+                    ArrayList<Book> toDelete = new ArrayList();
+                    for (Book book:Library.allBooks)
+                    if (book.getBookID()==id){
+                        Library.idList.remove(Integer.valueOf(id));
+                        toDelete.add(book);
+                        break;
+                    }
+                    for (Book book : toDelete) {
+                        Library.allBooks.remove(book);
+                    }
+                }
+                }
+            });
+
+            this.addWindowListener(new java.awt.event.WindowAdapter() {
+        public void windowClosing(WindowEvent winEvt) {
+            new ExportTable();
+        }
+    });
+
+            panel.getRootPane().setDefaultButton(filter);
+            add(filter,BorderLayout.SOUTH);
+            add(remove,BorderLayout.EAST);
             setSize(400, 300);
             setLocationRelativeTo(null);
             setVisible(true);
         }
+
+
 
     }
 
