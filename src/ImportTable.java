@@ -32,13 +32,10 @@ public class ImportTable {
 
                 String line = tableLines[i].toString().trim();
                 String[] dataRow = line.split(";(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                if (Library.idList.contains(Integer.parseInt(dataRow[0]))) {
-                    continue;
-                }
                 vectorStrings = new Vector<String>();
                 Collections.addAll(vectorStrings, dataRow);
                 vectorVectorStringsData.add(vectorStrings);
-                library.addBook(new Book(Integer.parseInt(dataRow[0]),dataRow[1],dataRow[2],dataRow[3],dataRow[4],false, dataRow[6]));
+                library.addBook(new Book(Integer.parseInt(dataRow[0]),dataRow[1],dataRow[2],dataRow[3],dataRow[4],false, Integer.parseInt(dataRow[6])));
             }
 
         }

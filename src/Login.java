@@ -4,6 +4,7 @@ import java.awt.event.ActionListener;
 
 public class Login extends JFrame {
 
+    public static String loginStatus;
     JPanel panel = new JPanel();
     JFrame frame = new JFrame();
     JLabel loginLabel = new JLabel("User");
@@ -49,7 +50,6 @@ public class Login extends JFrame {
         panel.add(help);
         panel.add(button);
         panel.add(QUIT);
-
         frame.add(panel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
@@ -89,6 +89,7 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                loginStatus = "admin";
                 new adminGUI();
             }
         });
@@ -96,6 +97,7 @@ public class Login extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frame.dispose();
+                loginStatus = "user";
                 new userGUI();
             }
         });
@@ -116,10 +118,12 @@ public class Login extends JFrame {
         if (login.equals("admin") && password.equals("admin123")) {
             JOptionPane.showMessageDialog(null, "Welcome admin", "Message", JOptionPane.PLAIN_MESSAGE);
             frame.dispose();
+            loginStatus = "admin";
             new adminGUI();
         } else if (login.equals("user") && password.equals("user123")) {
             JOptionPane.showMessageDialog(null, "Welcome user", "Message", JOptionPane.PLAIN_MESSAGE);
             frame.dispose();
+            loginStatus = "user";
             new userGUI();
         } else {
             JOptionPane.showMessageDialog(null, "Wrong Login or Password!", null, JOptionPane.INFORMATION_MESSAGE);

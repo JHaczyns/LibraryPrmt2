@@ -9,8 +9,6 @@ public class adminGUI implements ActionListener{
     JLabel label = new JLabel("What would you like to do?");
 
     JButton add_book = new JButton("Add book");
-    JButton remove_book = new JButton("Remove book");
-    JButton change_book_info = new JButton("Change book info");
     JButton check_all_books = new JButton("Check all books");
     JButton logout = new JButton("Logout");
 
@@ -22,15 +20,11 @@ public class adminGUI implements ActionListener{
         panel.setLayout(null);
         label.setBounds(65, 20, 200, 25);
         add_book.setBounds(65, 50, 150, 25);
-        remove_book.setBounds(65, 80, 150, 25);
-        change_book_info.setBounds(65, 110, 150, 25);
         check_all_books.setBounds(65, 140, 150, 25);
         logout.setBounds(65, 170, 150, 25);
 
         panel.add(label);
         panel.add(add_book);
-        panel.add(remove_book);
-        panel.add(change_book_info);
         panel.add(check_all_books);
         panel.add(logout);
 
@@ -41,8 +35,6 @@ public class adminGUI implements ActionListener{
         check_all_books.addActionListener(this);
         logout.addActionListener(this);
         add_book.addActionListener(this);
-        remove_book.addActionListener(this);
-        change_book_info.addActionListener(this);
 
     }
 
@@ -54,7 +46,6 @@ public class adminGUI implements ActionListener{
         }
         else if (e.getSource()==add_book) {
             library= new AddBook(library).returnLibrary();
-
 
         }
         else if(e.getSource()==logout){

@@ -13,7 +13,6 @@ public class userGUI implements ActionListener{
 
 
     JButton check_all_books = new JButton("Check all books");
-    JButton search_for_book = new JButton("Search for book");
     JButton logout = new JButton("Logout");
     public userGUI(){
         ImportTable tablecsv = new ImportTable();
@@ -29,19 +28,16 @@ public class userGUI implements ActionListener{
 
         label.setBounds(65, 20, 200, 25);
         check_all_books.setBounds(65, 50, 150, 25);
-        search_for_book.setBounds(65, 80, 150, 25);
         logout.setBounds(65, 110, 150, 25);
 
         panel.add(label);
         panel.add(check_all_books);
-        panel.add(search_for_book);
         panel.add(logout);
 
         frame.add(panel);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         check_all_books.addActionListener(this);
-        search_for_book.addActionListener(this);
         logout.addActionListener(this);
 
     }
@@ -52,9 +48,6 @@ public class userGUI implements ActionListener{
 
         if (e.getSource()==check_all_books) {
             FilterBooks sf= new FilterBooks(library);
-        }
-        else if(e.getSource()==search_for_book){
-
         }
         else if(e.getSource()==logout){
             frame.dispose();

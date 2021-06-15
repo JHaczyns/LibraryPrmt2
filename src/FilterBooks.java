@@ -5,7 +5,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
@@ -33,6 +32,10 @@ public class FilterBooks extends JFrame {
             add(panel, BorderLayout.NORTH);
             JButton filter = new JButton("Filter");
             JButton remove = new JButton("Remove");
+            JButton borrow = new JButton("Borrow");
+            JButton changeInfo = new JButton("Change info");
+
+
             filter.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     String text = filterText.getText();
@@ -56,7 +59,8 @@ public class FilterBooks extends JFrame {
                 }
             });
 
-            remove.addActionListener(e ->
+
+            remove.addActionListener(b ->
             {
                 int row = table.getSelectedRow();
                 if (row != -1) {
@@ -64,33 +68,107 @@ public class FilterBooks extends JFrame {
                 int dialogButton =  JOptionPane.YES_NO_OPTION;
                 int dialogResult = JOptionPane.showConfirmDialog (null, "Do you want to remove book: " + library.searchId(id).toString(), "Confirm", dialogButton);
                 if(dialogResult == JOptionPane.YES_OPTION){
-//                    library.removeBook(id);
-                    ArrayList<Book> toDelete = new ArrayList();
-                    for (Book book:Library.allBooks)
-                    if (book.getBookID()==id){
-                        Library.idList.remove(Integer.valueOf(id));
-                        toDelete.add(book);
-                        break;
-                    }
-                    for (Book book : toDelete) {
-                        Library.allBooks.remove(book);
+                    library.removeBook(id);
+                }
+                }
+            });
+
+
+            borrow.addActionListener(x ->{
+                int row = table.getSelectedRow();
+                if (row != -1) {
+                    int id = Integer.parseInt(String.valueOf(table.getValueAt(row, 0)));
+                    for (Book book : Library.allBooks) {
+                        if (book.getBookID() == id) {
+                            if (book.getBorrowedStatus()) {
+                                book.setBorrowedStatus(false);
+                                JOptionPane.showMessageDialog(null, "Changed book borrowed status to " + book.getBorrowedStatus(), "Changed book borrowed status", JOptionPane.INFORMATION_MESSAGE);
+                            } else {
+                                book.setBorrowedStatus(true);
+                                JOptionPane.showMessageDialog(null, "Changed book borrowed status to " + book.getBorrowedStatus(), "Changed book borrowed status", JOptionPane.INFORMATION_MESSAGE);
+                            }
                     }
                 }
                 }
             });
 
-            this.addWindowListener(new java.awt.event.WindowAdapter() {
+
+        String[] choices = {"ID", "Title",
+                "Genres",
+                "Subcategories",
+                "Author",
+                "Borrowed",
+                "ISBN"};
+        JComboBox<String> comboBox = new JComboBox<>(choices);
+        JPanel fields = new JPanel(new GridLayout(3, 1));
+        JTextField field = new JTextField(10);
+        JButton changeButton = new JButton("Change");
+        fields.add(field);
+        fields.add(comboBox);
+        fields.add(changeButton);
+        final String[][] bookInfo = new String[1][1];
+
+        changeInfo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent n) {
+                int row = table.getSelectedRow();
+                if (row != -1) {
+                int id = Integer.parseInt(String.valueOf((table.getValueAt(row, 0))));
+                for (Book book : Library.allBooks) {
+                    if (book.getBookID() == id) {
+                        bookInfo[0] = book.toString().split(";");
+                        int result = JOptionPane.showConfirmDialog(null, fields, "Change book info", JOptionPane.OK_OPTION, JOptionPane.QUESTION_MESSAGE);
+                        if (result == JOptionPane.OK_OPTION) {
+                            new ExportTable(library);
+                            dispose();
+                        }
+                    }
+                }
+
+            }
+            }
+        });
+
+
+        comboBox.addActionListener(f ->{
+            field.setText(String.valueOf(bookInfo[0][comboBox.getSelectedIndex()]));
+            field.setEditable(comboBox.getSelectedIndex() != 0);
+            field.setEditable(comboBox.getSelectedIndex() != 5);
+        });
+
+        changeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent m) {
+                int row = table.getSelectedRow();
+                int id = Integer.parseInt(String.valueOf((table.getValueAt(row, 0))));
+                for (Book book : Library.allBooks) {
+                    if (book.getBookID() == id) {
+                        library.changeBookInfo(book, comboBox.getSelectedIndex(), field.getText());
+                    }
+                }
+
+            }
+        });
+
+        this.addWindowListener(new java.awt.event.WindowAdapter() {
         public void windowClosing(WindowEvent winEvt) {
-            new ExportTable();
+            new ExportTable(library);
         }
     });
 
-            panel.getRootPane().setDefaultButton(filter);
-            add(filter,BorderLayout.SOUTH);
-            add(remove,BorderLayout.EAST);
-            setSize(400, 300);
-            setLocationRelativeTo(null);
-            setVisible(true);
+        panel.getRootPane().setDefaultButton(filter);
+        panel.setLayout(new BorderLayout());
+        add(filter,BorderLayout.SOUTH);
+        JPanel p1 = new JPanel();
+        if (Login.loginStatus.equals("admin")) {
+            p1.add(remove);
+            p1.add(changeInfo);
+        }
+        p1.add(borrow);
+        panel.add(p1,BorderLayout.EAST);
+        setSize(400, 300);
+        setLocationRelativeTo(null);
+        setVisible(true);
         }
 
 

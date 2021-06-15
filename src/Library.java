@@ -19,6 +19,8 @@ public class Library {
             if (book.getBookID()==id){
                 idList.remove(Integer.valueOf(id));
                 toDelete.add(book);
+                book = null;
+                System.gc();
                 break;
             }
         for (Book book : toDelete) {
@@ -27,34 +29,6 @@ public class Library {
     }
     public boolean IsIdTaken(int id){
         return idList.contains(id);
-    }
-    public void changeInfo(int id){
-        for (Book book:allBooks)
-            if (book.getBookID()==id){
-                try {
-                    book.changeBookInfo();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-    }
-    public void addToCategory(String category,Book book){
-        book.setCategory(category);
-    }
-    public void removeFromCategory(Book book){
-        book.setCategory(null);
-    }
-    public void getAllTitles(){
-        for (Book book:allBooks){
-            System.out.println( book.getTitle());
-        }
-
-    }
-    public void getAllInfo(){
-        for (Book book:allBooks){
-            System.out.println( book);
-        }
-
     }
     public void searchTitles(String title){
         for (Book book:allBooks){
@@ -91,10 +65,27 @@ public class Library {
         return null;
     }
 
+    public void changeBookInfo(Book book, int paramToChange, String value) {
+        switch (paramToChange) {
+            case 1:
+                book.setTitle(value);
+                break;
+            case 2:
+                book.setCategories(value.split(" "));
+                break;
+            case 3:
+                book.setSubcategories(value.split(" "));
+                break;
+            case 4:
+                book.setAuthor(value);
+                break;
+            case 6:
+                book.setIsbn(Integer.parseInt(value));
+                break;
+        }
+    }
+
     public String getTitle(Book book){
         return book.getTitle();
-    }
-    public String getCategory(Book book){
-        return book.getCategory();
     }
 }

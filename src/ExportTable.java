@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class ExportTable {
 
-    public ExportTable() {
+    public ExportTable(Library library) {
 
 
         ArrayList<Book> list = Library.allBooks;
@@ -41,7 +41,6 @@ public class ExportTable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        Library.idList.clear();
     }
 
 }

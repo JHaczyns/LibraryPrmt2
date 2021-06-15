@@ -117,7 +117,9 @@ public class AddBook extends JFrame implements ActionListener{
                         ArrayList categories = new ArrayList<>();
                         String[] category = Categorytxt.getText().split(" ");
                         for (String s:category) {
-                            categories.add(s);
+                            if (!s.equals("")) {
+                                categories.add(s);
+                            }
                         }
                         if (categories.isEmpty()) {
                             throw new AssertionError();
@@ -125,11 +127,13 @@ public class AddBook extends JFrame implements ActionListener{
                         ArrayList subcategories = new ArrayList<>();
                         String[] subcategory = Subcategorytxt.getText().split(" ");
                         for (String s:subcategory) {
-                            subcategories.add(s);
+                            if (!s.equals("")) {
+                                subcategories.add(s);
+                            }
                         }
                         if (subcategories.isEmpty()) {
                             throw new AssertionError();
-                        }                        String isbn = Isbntxt.getText();
+                        } Integer isbn = Integer.parseInt(Isbntxt.getText());
                         if (isbn.equals("")) {
                             throw new AssertionError();
                         }
@@ -137,7 +141,7 @@ public class AddBook extends JFrame implements ActionListener{
                         Book book = new Book(bookID, title, categories, subcategories, author, false, isbn);
                         library.addBook(book);
                         returnLibrary();
-                        new ExportTable();
+                        new ExportTable(library);
 
                         Idtxt.setText("");
                         Titletxt.setText("");
@@ -151,7 +155,7 @@ public class AddBook extends JFrame implements ActionListener{
                     }
 
                 } catch (NumberFormatException numberFormatException) {
-                    msgbox("ID must be an integer");
+                    msgbox("ID/ISBN must be an integer number");
                 }
 
                 catch (AssertionError assertionError) {

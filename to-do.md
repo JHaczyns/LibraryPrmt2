@@ -13,9 +13,9 @@
 -[x] Zapisanie biblioteki do pliku  
 -[x] Odczyt biblioteki z pliku
 -[x] Sprawdzanie czy bookID jest w bazie (unikanie duplikatu)
--[ ] Wypożyczanie
--[ ] Usuwanie książki z bazy
--[ ] Zmiana informacji o książce
+-[x] Wypożyczanie
+-[X] Usuwanie książki z bazy
+-[x] Zmiana informacji o książce
  
 -[ ] ~~Usunięcie podkategorii~~
 -[ ] ~~Przypisanie kategorii do kategorii-matki~~
