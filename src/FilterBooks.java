@@ -24,6 +24,7 @@ public class FilterBooks extends JFrame {
             add(new JScrollPane(table), BorderLayout.CENTER);
 
             JPanel panel = new JPanel(new BorderLayout());
+            JPanel p2 = new JPanel(new BorderLayout());
             JLabel label = new JLabel("Filter");
             panel.add(label, BorderLayout.WEST);
 
@@ -169,7 +170,9 @@ public class FilterBooks extends JFrame {
             p1.add(changeInfo);
         }
         p1.add(borrow);
-        panel.add(p1,BorderLayout.EAST);
+        p2.add(filterText);
+        panel.add(p1, BorderLayout.NORTH);
+        panel.add(p2, BorderLayout.SOUTH);
         setSize(400, 300);
         setLocationRelativeTo(null);
         setVisible(true);
