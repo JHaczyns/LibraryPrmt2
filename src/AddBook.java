@@ -127,9 +127,7 @@ public class AddBook extends JFrame implements ActionListener{
                         ArrayList subcategories = new ArrayList<>();
                         String[] subcategory = Subcategorytxt.getText().split(" ");
                         for (String s:subcategory) {
-                            if (!s.equals("")) {
                                 subcategories.add(s);
-                            }
                         }
                         if (subcategories.isEmpty()) {
                             throw new AssertionError();
